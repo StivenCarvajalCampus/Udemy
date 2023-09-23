@@ -1,0 +1,29 @@
+use ("login_skillup");
+db.createCollection('users',
+{
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["discordId","username", "guilds"],
+            properties: {
+                discordId:{
+                    bsonType: "string", 
+                    description:"El campo discordId debe ser numerico",
+                    
+
+                },
+                username:{
+                    bsonType: "string",
+                    description:"El campo username debe ser string",
+                    
+                },
+                guilds:{
+                    bsonType: "array",
+                    description:"El campo guilds debe ser array",
+                            
+                }
+
+        }
+    }
+}
+})
