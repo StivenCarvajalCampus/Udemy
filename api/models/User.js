@@ -1,8 +1,8 @@
-const { conex } = require('../config.js');
+import { conex } from '../config.js';
 
 async function getUserCollection() {
   const db = await conex(); // Obtener la instancia de la base de datos
   return db.collection('users'); // Devolver la colección "users"
 }
 
-module.exports = getUserCollection;
+export default getUserCollection;

@@ -1,9 +1,9 @@
-const dotenv = require('dotenv');
-const { MongoClient } = require('mongodb');
+import dotenv from 'dotenv';
+import MongoClient from 'mongodb';
 
 dotenv.config();
 const { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } = process.env;
-module.exports = {
+export default {
   
 DISCORD_CLIENT_ID,
 DISCORD_CLIENT_SECRET,

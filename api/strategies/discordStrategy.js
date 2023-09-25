@@ -1,7 +1,7 @@
-const passport = require('passport');
-const { Strategy } = require('passport-discord');
-const { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } = require('../config');
-const getUserCollection = require('../models/User');
+import passport from 'passport';
+import { Strategy } from 'passport-discord';
+import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from '../config.js';
+import getUserCollection from '../models/User.js';
 
 passport.serializeUser((user, done) => {
   done(null, user.discordId);
@@ -10,7 +10,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   try {
     const userCollection = await getUserCollection();
-    const user = await userCollection.findOne({ discordId : id });
+    const user = await userCollection.findOne({ discordId: id });
     done(null, user);
   } catch (error) {
     done(error, null);
@@ -32,8 +32,6 @@ passport.use(
 
         if (existingUser) {
           done(null, existingUser);
-
-          
         } else {
           const newUser = {
             discordId: profile.id,
@@ -42,7 +40,7 @@ passport.use(
           };
 
           await userCollection.insertOne(newUser);
-          console.log('New user created:', newUser); 
+          console.log('New user created:', newUser);
           done(null, newUser);
         }
       } catch (error) {

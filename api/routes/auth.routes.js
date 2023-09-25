@@ -1,13 +1,15 @@
-const { Router }= require("express");
+import { Router } from 'express';
+import passport from 'passport';
+
 const router = Router();
-const passport = require('passport');
 
 router.get('/login', passport.authenticate('discord'));
 router.get(
-    "/redirect",
-    passport.authenticate("discord",{
-        successRedirect:'/dashboard',
-        failureRedirect:"/",
-    })
-)
-module.exports = router ;
+  '/redirect',
+  passport.authenticate('discord', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/',
+  })
+);
+
+export default router;
