@@ -5,8 +5,10 @@ export default function App() {
   const login = async () => {
     try {
       window.location.href = "http://127.25.25.26:3302/login";
-    } catch (error) { /* empty */ }
-  } 
+    } catch (error) {
+      /* empty */
+    }
+  };
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="absolute left-0 top-180">
