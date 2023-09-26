@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import passport from 'passport';
+import '../strategies/discordStrategy.js'
 
 const router = Router();
 

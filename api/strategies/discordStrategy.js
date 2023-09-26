@@ -1,7 +1,9 @@
 import passport from 'passport';
 import { Strategy } from 'passport-discord';
-import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from '../config.js';
+import config from '../config.js';
 import getUserCollection from '../models/User.js';
+import dotenv from'dotenv';
+dotenv.config();
 
 passport.serializeUser((user, done) => {
   done(null, user.discordId);
@@ -20,9 +22,9 @@ passport.deserializeUser(async (id, done) => {
 passport.use(
   new Strategy(
     {
-      clientID: DISCORD_CLIENT_ID,
-      clientSecret: DISCORD_CLIENT_SECRET,
-      callbackURL: '/auth/redirect',
+      clientID: process.env.DISCORD_CLIENT_ID,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET,
+      callbackURL: 'http://127.25.25.26:3302/auth/redirect',
       scope: ['identify', 'guilds'],
     },
     async (accessToken, refreshToken, profile, done) => {
@@ -49,6 +51,6 @@ passport.use(
       }
     }
   )
-);
+);console.log(process.env.DISCORD_CLIENT_ID, process.env.DISCORD_CLIENT_SECRET);
 
-console.log(DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET);
+export default passport

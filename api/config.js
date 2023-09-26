@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import MongoClient from 'mongodb';
+import {MongoClient} from 'mongodb';
 
 dotenv.config();
 const { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } = process.env;
@@ -15,10 +15,12 @@ async conex() {
       useUnifiedTopology: true,
     };
     const client = await MongoClient.connect(uri, options);
+    console.log("Conexión exitosa a MongoDB");
     return client.db();
   } catch (error) {
-    return { status: 500, message: error.message };
+    console.error("Error al conectar a MongoDB:", error);
+    throw error;
   }
-
 }
+
 };

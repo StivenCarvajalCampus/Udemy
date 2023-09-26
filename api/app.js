@@ -1,21 +1,10 @@
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url'; 
 import session from 'express-session';
 import passport from 'passport';
-import { createEngine } from 'express-react-views';
 
-import './strategies/discordStrategy.js';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 // Configuraciones
 const appExpress = express();
 appExpress.use(express.json());
-appExpress.set('views', path.join(__dirname, 'src', 'views'));
-appExpress.set('view engine', 'jsx'); // Usar el motor de vistas "jsx"
-
-// Middleware para compilar JSX
-appExpress.engine('jsx', createEngine());
 
 // Middlewares
 appExpress.use(
