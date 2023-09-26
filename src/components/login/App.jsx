@@ -1,12 +1,11 @@
 import React from "react";
-import { Card, CardHeader, CardBody, Image, Button } from "@nextui-org/react";
+import { Card, CardHeader, Image, Button } from "@nextui-org/react";
 
 export default function App() {
   const login = async () => {
     try {
-      window.location.href = "http://127.25.25.26:3302/auth/login";
-    } catch (error) {
-    }
+      window.location.href = "http://127.25.25.26:3302/login";
+    } catch (error) { /* empty */ }
   } 
   return (
     <div className="flex items-center justify-center h-screen">

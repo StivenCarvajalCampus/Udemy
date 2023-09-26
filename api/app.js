@@ -1,6 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
+import router_login from './routes/auth.routes.js';
 
 // Configuraciones
 const appExpress = express();
@@ -17,14 +18,7 @@ appExpress.use(
 appExpress.use(passport.initialize());
 appExpress.use(passport.session());
 
-// Routes
-import indexRoutes from './routes/index.routes.js';
-import authRoutes from './routes/auth.routes.js';
-import dashboardRoutes from './routes/dashboard.routes.js';
 
-appExpress.use('/', indexRoutes);
-appExpress.use('/auth', authRoutes);
-appExpress.use('/', dashboardRoutes);
-
+appExpress.use(router_login);
 // Variables Globales
 export default appExpress;
