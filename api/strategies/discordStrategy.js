@@ -28,6 +28,7 @@ passport.use(
       scope: ['identify', 'guilds'],
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log('Perfil de usuario recibido:', profile);  
       try {
         const userCollection = await getUserCollection();
         const existingUser = await userCollection.findOne({ discordId: profile.id });
