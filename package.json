@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.1.13",
+    "cors": "^2.8.5",
     "framer-motion": "^10.16.4",
     "node": "^20.6.0",
     "react": "^18.2.0",

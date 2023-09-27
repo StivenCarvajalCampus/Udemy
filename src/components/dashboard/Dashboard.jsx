@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Navbar,
@@ -11,11 +11,38 @@ import {
   Dropdown,
   DropdownMenu,
   Avatar,
+  Tabs, Tab, Card
 } from "@nextui-org/react";
 import { AcmeLogo } from "./AcmeLogo.jsx";
+import { useLocation } from "react-router-dom";
 
 export default function Dashboard() {
-  
+  const location = useLocation();
+  const userId = new URLSearchParams(location.search).get("userId");
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    // Realizar una solicitud para obtener los datos del usuario
+    if (userId) {
+      fetch(`http://127.25.25.26:3302/user/${userId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setUserData(data); // Guardar los datos del usuario en el estado
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos del usuario: ", error);
+        });
+    }
+  }, [userId]);
+  const colors = [
+    "default",
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "danger"
+  ];
   return (
     <Navbar>
       <NavbarBrand>
@@ -57,7 +84,7 @@ export default function Dashboard() {
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold">{userData.username}</p>
             </DropdownItem>
             <DropdownItem key="settings">My Settings</DropdownItem>
             <DropdownItem key="team_settings">Team Settings</DropdownItem>
@@ -71,7 +98,20 @@ export default function Dashboard() {
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
-    </Navbar>
+    </Navbar>,
+
+
     
+    <Card>
+    <div className="flex flex-wrap gap-4">
+      {colors.map((color) => (
+        <Tabs key={color} color={color} aria-label="Tabs colors" radius="full">
+          <Tab key="photos" title="Photos"/>
+          <Tab key="music" title="Music"/>
+          <Tab key="videos" title="Videos"/>
+        </Tabs>
+      ))}
+    </div>
+        </Card>
   );
 }

@@ -2,7 +2,9 @@ import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import router_login from './routes/auth.routes.js';
+import cors from "cors";
 import './strategies/discordStrategy.js';
+
 // Configuraciones
 const appExpress = express();
 appExpress.use(express.json());
@@ -17,6 +19,7 @@ appExpress.use(
 );
 appExpress.use(passport.initialize());
 appExpress.use(passport.session());
+appExpress.use(cors())
 
 // Variables Globales
 appExpress.use((req, res, next) => {
