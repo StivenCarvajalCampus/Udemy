@@ -23,7 +23,7 @@ function CardComponent({ title, subdescription, description, imageSrc,Trainer })
             className="object-cover rounded-xl"
             src={imageSrc}
             width={270}
-            onClick="Hola"
+            onClick={() => console.log("hola")}
           />
         </CardBody>
       </Card>
