@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: <Studentinit />,
   },
   {
-    path: "/Videoplay",
+    path: "/ScreenVideo",
     element: <ScreenVideo/>
   }
 ]);
