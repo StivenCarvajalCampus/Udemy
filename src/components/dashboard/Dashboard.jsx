@@ -1,140 +1,79 @@
-import React, { useEffect, useState } from "react";
-
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  Avatar,
-  Tabs,
-  Tab,
-  Card,
-  CardBody
-} from "@nextui-org/react";
-import { AcmeLogo } from "./AcmeLogo.jsx";
-import { useLocation } from "react-router-dom";
-
+import NavbarComponent from "../NavbarComponent/NavbarComponent.jsx";
+const features = [
+  { name: "Origin", description: "Designed by Good Goods, Inc." },
+  {
+    name: "Material",
+    description:
+      "Solid walnut base with rare earth magnets and powder coated steel card cover",
+  },
+  { name: "Dimensions", description: '6.25" x 3.55" x 1.15"' },
+  { name: "Finish", description: "Hand sanded and finished with natural oil" },
+  { name: "Includes", description: "Wood card tray and 3 refill packs" },
+  {
+    name: "Considerations",
+    description:
+      "Made from natural materials. Grain and color vary with each item.",
+  },
+];
 export default function Dashboard() {
-  const location = useLocation();
-  const userId = new URLSearchParams(location.search).get("userId");
-  const [userData, setUserData] = useState({});
-
-  useEffect(() => {
-    // Realizar una solicitud para obtener los datos del usuario
-    if (userId) {
-      fetch(`http://127.25.25.26:3302/user/${userId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setUserData(data); // Guardar los datos del usuario en el estado
-        })
-        .catch((error) => {
-          console.error("Error al obtener los datos del usuario: ", error);
-        });
-    }
-  }, [userId]);
-  const colors = [
-    "default",
-    "primary",
-    "secondary",
-    "success",
-    "warning",
-    "danger",
-  ];
   return (
     <>
-      <div className="w-full">
-        <Navbar >
-          <NavbarBrand>
-            <AcmeLogo />
-            <p className="font-bold text-inherit">Skillup</p>
-          </NavbarBrand>
+      <NavbarComponent />
+      <div>
+        <div className="bg-white">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 sm:grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Technical Specifications
+              </h2>
+              <p className="mt-4 text-gray-500">
+                The walnut wood card tray is precision milled to perfectly fit a
+                stack of Focus cards. The powder coated steel divider separates
+                active cards from new ones, or can be used to archive important
+                task lists.
+              </p>
 
-          <NavbarContent className="hidden sm:flex gap-4" justify="center">
-            <NavbarItem>
-              <Link color="foreground" href="#">
-                Features
-              </Link>
-            </NavbarItem>
-            <NavbarItem isActive>
-              <Link href="#" aria-current="page" color="secondary">
-                Customers
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link color="foreground" href="#">
-                Integrations
-              </Link>
-            </NavbarItem>
-          </NavbarContent>
-
-          <NavbarContent as="div" justify="end">
-            <Dropdown placement="bottom-end">
-              <DropdownTrigger>
-                <Avatar
-                  isBordered
-                  as="button"
-                  className="transition-transform"
-                  color="secondary"
-                  name="Jason Hughes"
-                  size="sm"
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                />
-              </DropdownTrigger>
-              <DropdownMenu aria-label="Profile Actions" variant="flat">
-                <DropdownItem key="profile" className="h-14 gap-2">
-                  <p className="font-semibold">Signed in as</p>
-                  <p className="font-semibold">{userData.username}</p>
-                </DropdownItem>
-                <DropdownItem key="settings">My Settings</DropdownItem>
-                <DropdownItem key="team_settings">Team Settings</DropdownItem>
-                <DropdownItem key="analytics">Analytics</DropdownItem>
-                <DropdownItem key="system">System</DropdownItem>
-                <DropdownItem key="configurations">Configurations</DropdownItem>
-                <DropdownItem key="help_and_feedback">
-                  Help & Feedback
-                </DropdownItem>
-                <DropdownItem key="logout" color="danger">
-                  Log Out
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </NavbarContent>
-        </Navbar>
-        , <div className="flex w-full flex-col">
-      {colors.map((color) => (
-      <Tabs key={color} color={color} aria-label="Colors">
-        <Tab key="photos" title="Photos">
-          <Card>
-            <CardBody>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </CardBody>
-          </Card>  
-        </Tab>
-        <Tab key="music" title="Music">
-          <Card>
-            <CardBody>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </CardBody>
-          </Card>  
-        </Tab>
-        <Tab key="videos" title="Videos">
-          <Card>
-            <CardBody>
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </CardBody>
-          </Card>  
-        </Tab>
-      </Tabs>
-      ))}
-    </div>  
-      <br />
-    </div>
+              <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+                {features.map((feature) => (
+                  <div
+                    key={feature.name}
+                    className="border-t border-gray-200 pt-4"
+                  >
+                    <dt className="font-medium text-gray-900">
+                      {feature.name}
+                    </dt>
+                    <dd className="mt-2 text-sm text-gray-500">
+                      {feature.description}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-01.jpg"
+                alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+                className="rounded-lg bg-gray-100"
+              />
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-02.jpg"
+                alt="Top down view of walnut card tray with embedded magnets and card groove."
+                className="rounded-lg bg-gray-100"
+              />
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-03.jpg"
+                alt="Side of walnut card tray with card groove and recessed card area."
+                className="rounded-lg bg-gray-100"
+              />
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-04.jpg"
+                alt="Walnut card tray filled with cards and card angled in dedicated groove."
+                className="rounded-lg bg-gray-100"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
