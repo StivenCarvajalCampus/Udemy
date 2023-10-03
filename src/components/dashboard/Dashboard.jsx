@@ -15,7 +15,6 @@ export default function Dashboard() {
   const location = useLocation();
   const userId = new URLSearchParams(location.search).get("userId");
   const [userData, setUserData] = useState({});
-
   useEffect(() => {
     // Realizar una solicitud para obtener los datos del usuario
     if (userId) {

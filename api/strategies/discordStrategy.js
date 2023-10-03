@@ -39,8 +39,11 @@ passport.use(
           const newUser = {
             discordId: profile.id,
             username: profile.username,
+            avatar: profile.avatar,
             guilds: profile.guilds,
           };
+
+          console.log(profile.avatar ,"este es el avatar ");
 
           await userCollection.insertOne(newUser);
           console.log('New user created:', newUser);
