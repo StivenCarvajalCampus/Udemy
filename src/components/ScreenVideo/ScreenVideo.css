@@ -1,0 +1,43 @@
+    .video-section {
+        display: flex;
+        flex-direction: row; /* Coloca los elementos en fila */
+        
+    }
+    
+    .video-container {
+        flex: 1; /* Hace que el video ocupe el 50% del ancho disponible */
+        padding: 20px; /* Espaciado opcional para el video */
+        
+    }
+    
+    .sections-container {
+        flex: 1; /* Hace que las listas desplegables ocupen el 50% del ancho disponible */
+        padding: 20px; /* Espaciado opcional para las listas desplegables */
+        
+    }
+    .custom-div {
+        background: linear-gradient(to bottom, #333, #000); /* Gradiente de colores entre gris y negro */
+        border-radius: 10px; /* Bordes redondeados de 10px */
+        padding: 10px; /* Espacio interior */
+        margin-bottom: 10px; /* Espacio entre secciones */
+    }
+    
+
+    .custom-container {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra de color negro */
+        padding: 20px; /* Espacio interior */
+        border-radius: 10px; /* Bordes redondeados */
+      }
+      
+    
+    .custom-div summary {
+        cursor: pointer; /* Cambia el cursor al hacer hover sobre el resumen */
+    }
+    .custom-button {
+        background-color: #333; /* Color de fondo */
+        color: white; /* Color del texto */
+        border: none; /* Borde */
+        border-radius: 5px; /* Bordes redondeados */
+        padding: 5px 10px; /* Espaciado interno */
+        cursor: pointer; /* Cursor al hacer hover */
+    }   
