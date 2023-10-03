@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import { nextui } from '@nextui-org/react'
-export default{
+export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,8 +8,8 @@ export default{
   ],
   theme: {
     extend: {
-      backgroundImage:{
-        'hero-pattern': "url('/src/assets/images/fondo.jpg')",
+      backgroundImage: {
+        'hero-pattern': "url('/src/assets/images/fondo.svg')",
         'footer-texture': "url('/src/assets/images/discord.jpg')",
       }
     },
