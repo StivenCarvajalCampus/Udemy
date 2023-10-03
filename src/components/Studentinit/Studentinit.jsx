@@ -7,7 +7,7 @@ export default function Dashboard() {
     <div className="w-full">
       <NavbarComponent />
       <div className="flex flex-row -m-2 justify-center">
-        <div className="flex flex-row flex-col mt-4 mx-auto max-w-md m-4 p-4 ">
+        <div className="p-6">
           <CardComponent
             title="Cantidad de videos"
             subdescription="12 Tracks"
@@ -22,17 +22,17 @@ export default function Dashboard() {
             title="Cantidad de videos"
             subdescription="12 Tracks"
             description="Git"
-            imageSrc="src/assets/images/git.jpg"
+            imageSrc="src/assets/images/js.jpg"
             Trainer="FapCodYT"
             style={{ margin: "0.5rem" }}
           />
         </div>
-        <div>
+        <div className="p-4, m-4">
           <CardComponent
             title=""
             subdescription="12 Tracks"
             description="Git"
-            imageSrc="src/assets/images/git.jpg"
+            imageSrc="src/assets/images/reactdecero.jpg"
             Trainer="FapCodYT"
             style={{ margin: "0.5rem", padding:"0.5rem"}}
           />

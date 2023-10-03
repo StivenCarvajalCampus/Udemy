@@ -66,7 +66,7 @@ function Secciones() {
               return (
                 <div key={i} className="custom-container">
                   <details
-                    className="bg-yellow-500"
+                    className="bg-black-500"
                     open={sectionNumber === selectedSectionNumber}
                   >
                     <summary
