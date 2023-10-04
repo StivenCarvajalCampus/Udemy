@@ -7,7 +7,7 @@ const features = [
 },
   
 ];
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import {Button} from "@nextui-org/react";
 import CardComponent from "../Cardcomponent/Cardcomponent.jsx";
@@ -85,6 +85,7 @@ export default function Dashboard() {
               />
             </div>
             <div className="flex justify-center p-4">
+              <Link to={"/studentinit"}>
               <Button
                 color="primary"
                 variant="ghost"
@@ -92,71 +93,23 @@ export default function Dashboard() {
               >
                 Registrate en un curso
               </Button>
+              </Link>
+            </div>
+            <div className="flex justify-center p-4">
+              <Link to={"/playlist"}>
+              <Button
+                color="primary"
+                variant="ghost"
+                className="flex justify-center"
+              >
+                Recomendaciones
+              </Button>
+              </Link>
             </div>
           </div>
         </div>
-        <div className="flex justify-center text-white">
-          <dl className="flex justify-center mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8 text-white">
-            {features.map((feature) => (
-              <div
-                key={feature.namespotify}
-                className="border-t border-white-200 pt-4"
-              >
-                <dt className="font-medium text-white-900">
-                  {feature.namespotify}
-                </dt>
-                <dd className="mt-2 text-sm text-white-500"></dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <div className="bg-background/10 dark:bg-default-100/50 grid grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          <img
-            src="src/assets/images/code-music.jpeg"
-            alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-            className="rounded-lg bg-gray-100"
-            onClick={() =>
-              window.open(
-                "https://open.spotify.com/playlist/37i9dQZF1DX5trt9i14X7j",
-                "_blank"
-              )
-            }
-          />
-          <img
-            src="src/assets/images/coding-mode.jpeg"
-            alt="Top down view of walnut card tray with embedded magnets and card groove."
-            className="rounded-lg bg-gray-100"
-            onClick={() =>
-              window.open(
-                "https://open.spotify.com/playlist/37i9dQZF1DX5trt9i14X7j",
-                "_blank"
-              )
-            }
-          />
-          <img
-            src="src/assets/images/coding-nigth.jpeg"
-            alt="Side of walnut card tray with card groove and recessed card area."
-            className="rounded-lg bg-gray-100"
-            onClick={() =>
-              window.open(
-                "https://open.spotify.com/playlist/37i9dQZF1DX5trt9i14X7j",
-                "_blank"
-              )
-            }
-          />
-          <img
-            src="src/assets/images/piano-music.jpeg"
-            alt="Walnut card tray filled with cards and card angled in dedicated groove."
-            className="rounded-lg bg-gray-100"
-            onClick={() =>
-              window.open(
-                "https://open.spotify.com/playlist/3Bzoq84W009lnGNYwjDWkI",
-                "_blank"
-              )
-            }
-          />
-        </div>
+        <br />
+        <br />
       </div>
     </>
   );

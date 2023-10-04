@@ -10,10 +10,12 @@ function Secciones() {
   const [loading, setLoading] = useState(true);
   const [selectedVideoTitle, setSelectedVideoTitle] = useState("");
   const [selectedSectionNumber, setSelectedSectionNumber] = useState(1); // Inicialmente, selecciona la primera sección
-
+//Obtener Usuario id
   const location = useLocation();
   const userId = new URLSearchParams(location.search).get("userId");
   const [userData, setUserData] = useState({});
+//Obtener curso
+const selectedCourse = new URLSearchParams(location.search).get("course");
 
   useEffect(() => {
 
@@ -35,7 +37,7 @@ function Secciones() {
     async function fetchData() {
       try {
         const response = await fetch(
-          "http://192.168.128.23:5010/cursos/?course=git"
+          `http://192.168.128.23:5010/cursos/?course=${selectedCourse}`
         );
         if (!response.ok) {
           throw new Error("No se pudo cargar la información desde la API");
@@ -49,7 +51,7 @@ function Secciones() {
       }
     }
     fetchData();
-  }, []);
+  }, [selectedCourse]);
 
   if (loading) {
     return <p>Cargando...</p>;
@@ -62,7 +64,7 @@ function Secciones() {
   const handleSummaryClick = (sectionNumber) => {
     setSelectedSectionNumber(sectionNumber);
     setSelectedVideoTitle("");
-  };
+  };/* 
   const [commentText, setCommentText] = useState("");
 
   const handleCommentSubmit = async () => {
@@ -91,7 +93,7 @@ function Secciones() {
     } catch (error) {
       console.error("Error de red al enviar el comentario:", error);
     }
-  };
+  }; */
   return (
     <div className="w-full">
       <NavbarComponent />
@@ -101,7 +103,7 @@ function Secciones() {
             <div>
               <video
                 autoPlay
-                src={`http://192.168.128.23:5010/cursos/play?course=git&seccion=${selectedSectionNumber}&video=${selectedVideoTitle}`}
+                src={`http://192.168.128.23:5010/cursos/play?course=${selectedCourse}&seccion=${selectedSectionNumber}&video=${selectedVideoTitle}`}
                 width="820"
                 height="640"
                 controls
@@ -110,7 +112,7 @@ function Secciones() {
           )}
         </div>
         <div className="dark:bg-default-100/50 flex justify-end sections-container">
-          <h1>Aprende Git:</h1>
+          <h1 className="flex justify-center text-white font-bold">Aprende {selectedCourse}:</h1>
           <div className="contenido text-white p-8">
             {data.map((section, i) => {
               const sectionNumber = i + 1;
@@ -180,11 +182,11 @@ function Secciones() {
           labelPlacement="outside"
           placeholder="Enter your Comment"
           className="col-span-4 h-full"
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)} // Actualizar el estado del texto del comentario
+          /* value={commentText}
+          onChange={(e) => setCommentText(e.target.value)} // Actualizar el estado del texto del comentario */
 
         />
-        <button onClick={handleCommentSubmit}>Enviar Comentario</button>
+        {/* <button onClick={handleCommentSubmit}>Enviar Comentario</button> */}
       </div>
     </div>
 

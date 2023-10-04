@@ -4,6 +4,7 @@ import App from "./login/App";
 import Studentinit from "./Studentinit/Studentinit"
 import { element } from "prop-types";
 import ScreenVideo from "./ScreenVideo/ScreenVideo";
+import Playlist from "./Playlist/playlist";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
   {
     path: "/ScreenVideo",
     element: <ScreenVideo/>
+  },
+  {
+    path:"/playlist",
+    element: <Playlist/>
   }
+
 ]);
 export default router;

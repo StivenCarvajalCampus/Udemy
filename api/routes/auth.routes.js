@@ -6,6 +6,10 @@ import '../strategies/discordStrategy.js'
 const router_login = Router();
 
 router_login.get('/login', passport.authenticate('discord'));
+router_login.get('/logout', (req, res) => {
+  req.logout({}, err => console.log(err));
+  res.redirect('/');
+})
 
 router_login.get('/auth/redirect',
 

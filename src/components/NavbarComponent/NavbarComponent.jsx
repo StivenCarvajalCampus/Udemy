@@ -44,20 +44,16 @@ import React, { useEffect, useState } from "react";
 
           <NavbarContent className="hidden sm:flex gap-4" justify="center">
             <NavbarItem>
-              <Link color="foreground" href="#">
-                Features
+              <Link color="foreground" href="/dashboard">
+                Inicio 
               </Link>
             </NavbarItem>
             <NavbarItem isActive>
-              <Link href="#" aria-current="page" color="secondary">
-                Customers
+              <Link aria-current="page" color="secondary" href="/playlist">
+                Playlists
               </Link>
             </NavbarItem>
-            <NavbarItem>
-              <Link color="foreground" href="#">
-                Integrations
-              </Link>
-            </NavbarItem>
+            
           </NavbarContent>
 
           <NavbarContent as="div" justify="end">
@@ -97,8 +93,8 @@ import React, { useEffect, useState } from "react";
                 <DropdownItem key="help_and_feedback">
                   Help & Feedback
                 </DropdownItem>
-                <DropdownItem key="logout" color="danger">
-                  Log Out
+                <DropdownItem key="logout" color="danger" href="http://127.25.25.26:3302/logout">
+                  <Link to="/logout"></Link>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
