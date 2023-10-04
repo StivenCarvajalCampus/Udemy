@@ -10,12 +10,12 @@ function Secciones() {
   const [loading, setLoading] = useState(true);
   const [selectedVideoTitle, setSelectedVideoTitle] = useState("");
   const [selectedSectionNumber, setSelectedSectionNumber] = useState(1); // Inicialmente, selecciona la primera sección
-//Obtener Usuario id
+  //Obtener Usuario id
   const location = useLocation();
   const userId = new URLSearchParams(location.search).get("userId");
   const [userData, setUserData] = useState({});
-//Obtener curso
-const selectedCourse = new URLSearchParams(location.search).get("course");
+  //Obtener curso
+  const selectedCourse = new URLSearchParams(location.search).get("course");
 
   useEffect(() => {
 
@@ -95,7 +95,7 @@ const selectedCourse = new URLSearchParams(location.search).get("course");
     }
   }; */
   return (
-    <div className="w-full">
+    <div className="w-full h-screen flex flex-col">
       <NavbarComponent />
       <div className="video-section">
         <div className="video-container">
@@ -182,8 +182,8 @@ const selectedCourse = new URLSearchParams(location.search).get("course");
           labelPlacement="outside"
           placeholder="Enter your Comment"
           className="col-span-4 h-full"
-          /* value={commentText}
-          onChange={(e) => setCommentText(e.target.value)} // Actualizar el estado del texto del comentario */
+        /* value={commentText}
+        onChange={(e) => setCommentText(e.target.value)} // Actualizar el estado del texto del comentario */
 
         />
         {/* <button onClick={handleCommentSubmit}>Enviar Comentario</button> */}

@@ -1237,10 +1237,6 @@ video {
   max-width: 20rem;
 }
 
-.max-w-screen-xl {
-  max-width: 1280px;
-}
-
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -6293,10 +6289,6 @@ video {
 
   .md\:grid-rows-2 {
     grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
-
-  .md\:p-8 {
-    padding: 2rem;
   }
 }
 

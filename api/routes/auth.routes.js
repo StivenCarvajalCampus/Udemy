@@ -2,10 +2,11 @@ import { Router } from 'express';
 import { getUser } from "../models/User.js";
 import passport from 'passport';
 import '../strategies/discordStrategy.js'
+import {isNotAuthorized } from '../utils/auth.js'
 
 const router_login = Router();
 
-router_login.get('/login', passport.authenticate('discord'));
+router_login.get('/login',isNotAuthorized, passport.authenticate('discord'));
 router_login.get('/logout', (req, res) => {
   req.logout({}, err => console.log(err));
   res.redirect('/');
