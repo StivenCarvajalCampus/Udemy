@@ -1,0 +1,20 @@
+use ("login_skillup");
+db.createCollection('comments',
+    {
+        validator: {
+            $jsonSchema: {
+                bsonType: "object",
+                required: ["comment", "id_user"],
+                properties: {
+                    id_user:{
+                        bsonType: "string",
+                        description:"el campo id_user debe ser numerico",
+                    },
+                    comment: {
+                        bsonType: "string",
+                        description:"El campo comment debe ser string",
+        }
+    }
+            }
+        }
+})

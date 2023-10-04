@@ -1,6 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import { Avatar, Textarea } from "@nextui-org/react";
 import { useEffect, useState } from "react";
-import "./ScreenVideo.css";
+import { useLocation } from "react-router-dom";
 import NavbarComponent from "../NavbarComponent/NavbarComponent";
+import "./ScreenVideo.css";
 
 function Secciones() {
   const [data, setData] = useState([]);
@@ -8,6 +11,26 @@ function Secciones() {
   const [selectedVideoTitle, setSelectedVideoTitle] = useState("");
   const [selectedSectionNumber, setSelectedSectionNumber] = useState(1); // Inicialmente, selecciona la primera sección
 
+  const location = useLocation();
+  const userId = new URLSearchParams(location.search).get("userId");
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+
+    if (userId) {
+      fetch(`http://127.25.25.26:3302/user/${userId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setUserData(data);
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos del usuario: ", error);
+        });
+    }
+  }, [userId]);
+  //https://cdn.discordapp.com/avatars/606870241720401959/dcc4677ea230feaa46fc8a3810a6d08a.png
+  console.log(userData.avatar);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -39,6 +62,35 @@ function Secciones() {
   const handleSummaryClick = (sectionNumber) => {
     setSelectedSectionNumber(sectionNumber);
     setSelectedVideoTitle("");
+  };
+  const [commentText, setCommentText] = useState("");
+
+  const handleCommentSubmit = async () => {
+    if (!commentText) {
+      return; 
+    }
+
+    
+    const newComment = {
+      text: commentText,
+      userId: userId, 
+    };
+    try {
+      const response = await fetch("http://127.25.25.26:3302/comentarios", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newComment),
+      }); if (response.ok) {
+        console.log("Comentario guardado exitosamente");
+        setCommentText(""); 
+      } else {
+        console.error("Error al guardar el comentario en el backend");
+      }
+    } catch (error) {
+      console.error("Error de red al enviar el comentario:", error);
+    }
   };
   return (
     <div className="w-full">
@@ -98,7 +150,44 @@ function Secciones() {
           </div>
         </div>
       </div>
+      <div className="flex justify-between place-items-center md:grid-cols-5 md:grid-rows-2 grid-cols-2 gap-2">
+        <div className="flex justify-start w-auto p-5">
+          {userData.avatar ? (
+            <Avatar
+              isBordered
+              className="transition-transform"
+              color="secondary"
+              name={userData.username}
+              size="sm"
+              src={`https://cdn.discordapp.com/avatars/${userData.discordId}/${userData.avatar}.png`}
+            />
+          ) : (
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform"
+              color="secondary"
+              name={userData.username}
+              size="sm"
+              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            />
+          )}
+        </div>
+        <Textarea
+
+          isRequired
+          label="Comments"
+          labelPlacement="outside"
+          placeholder="Enter your Comment"
+          className="col-span-4 h-full"
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)} // Actualizar el estado del texto del comentario
+
+        />
+        <button onClick={handleCommentSubmit}>Enviar Comentario</button>
+      </div>
     </div>
+
   );
 }
 
