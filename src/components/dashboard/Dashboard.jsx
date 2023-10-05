@@ -18,7 +18,7 @@ export default function Dashboard() {
   useEffect(() => {
     // Realizar una solicitud para obtener los datos del usuario
     if (userId) {
-      fetch(`http://127.25.25.26:3302/user/${userId}`)
+      fetch(`http://localhost:5087/user/${userId}`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);

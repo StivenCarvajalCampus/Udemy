@@ -20,7 +20,7 @@
     useEffect(() => {
 
       if (userId) {
-        fetch(`http://127.25.25.26:3302/user/${userId}`)
+        fetch(`http://localhost:5087/user/${userId}`)
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -78,7 +78,7 @@
         userId: userId, 
       };
       try {
-        const response = await fetch("http://127.25.25.26:3302/comentarios", {
+        const response = await fetch("http://localhost:5087/comentarios", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

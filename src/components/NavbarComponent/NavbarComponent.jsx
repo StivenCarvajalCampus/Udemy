@@ -21,7 +21,7 @@ import React, { useEffect, useState } from "react";
     useEffect(() => {
       // Realizar una solicitud para obtener los datos del usuario
       if (userId) {
-        fetch(`http://127.25.25.26:3302/user/${userId}`)
+        fetch(`http://localhost:5087/user/${userId}`)
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -84,7 +84,7 @@ import React, { useEffect, useState } from "react";
                 <DropdownItem key="help_and_feedback">
                   Help & Feedback
                 </DropdownItem>
-                <DropdownItem key="logout" color="danger" href="http://127.25.25.26:3302/logout">
+                <DropdownItem key="logout" color="danger" href="http://localhost:5087/logout">
   Logout
 </DropdownItem>
               </DropdownMenu>

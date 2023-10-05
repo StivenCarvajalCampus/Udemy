@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
-      callbackURL: 'http://127.25.25.26:3302/auth/redirect',
+      callbackURL: 'http://localhost:5087/auth/redirect',
       scope: ['identify', 'guilds'],
     },
     async (accessToken, refreshToken, profile, done) => {
