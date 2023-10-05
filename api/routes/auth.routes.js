@@ -5,16 +5,14 @@ import '../strategies/discordStrategy.js'
 
 const router_login = Router();
 
-
-
 router_login.get('/auth/redirect',
 
   passport.authenticate('discord', {
-    failureRedirect: 'http://127.25.25.26',
+    failureRedirect: 'http://localhost',
   }),
   (req, res) => {
     const user = req.user;
-    res.redirect(`http://127.25.25.26:3300/dashboard?userId=${user.discordId}`);
+    res.redirect(`http://localhost:3300/dashboard?userId=${user.discordId}`);
 
   }
 );

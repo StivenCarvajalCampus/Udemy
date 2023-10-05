@@ -5,6 +5,7 @@ export default function App() {
   const login = async () => {
     try {
       window.location.href = "http://127.25.25.26:3302/auth/redirect";
+
     } catch (error) {
       /* empty */
     }
