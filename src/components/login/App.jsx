@@ -4,7 +4,8 @@ import { Card, CardHeader, Image, Button } from "@nextui-org/react";
 export default function App() {
   const login = async () => {
     try {
-      window.location.href = "http://localhost:5087/login";
+      window.location.href = "http://127.25.25.26:3302/auth/redirect";
+
     } catch (error) {
       /* empty */
     }
