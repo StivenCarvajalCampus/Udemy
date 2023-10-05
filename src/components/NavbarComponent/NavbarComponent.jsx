@@ -35,24 +35,15 @@ import React, { useEffect, useState } from "react";
     //https://cdn.discordapp.com/avatars/606870241720401959/dcc4677ea230feaa46fc8a3810a6d08a.png
     console.log(userData.avatar);
     return (
-      <Navbar className="bg-white">
+      <Navbar className="bg-white opacity-60">
         <Navbar className="bg-white">
           <NavbarBrand>
             <AcmeLogo />
-            <p className="font-bold text-inherit">Skillup</p>
+            <p className="font-bold text-inherit ">Skillup</p>
           </NavbarBrand>
 
           <NavbarContent className="hidden sm:flex gap-4" justify="center">
-            <NavbarItem>
-              <Link color="foreground" href="/dashboard">
-                Inicio 
-              </Link>
-            </NavbarItem>
-            <NavbarItem isActive>
-              <Link aria-current="page" color="secondary" href="/playlist">
-                Playlists
-              </Link>
-            </NavbarItem>
+           
             
           </NavbarContent>
 
@@ -94,8 +85,8 @@ import React, { useEffect, useState } from "react";
                   Help & Feedback
                 </DropdownItem>
                 <DropdownItem key="logout" color="danger" href="http://127.25.25.26:3302/logout">
-                  <Link to="/logout"></Link>
-                </DropdownItem>
+  Logout
+</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </NavbarContent>

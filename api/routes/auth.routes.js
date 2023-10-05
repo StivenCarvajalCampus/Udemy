@@ -2,7 +2,6 @@ import { Router } from 'express';
 import { getUser } from "../models/User.js";
 import passport from 'passport';
 import '../strategies/discordStrategy.js'
-import {isNotAuthorized } from '../utils/auth.js'
 
 const router_login = Router();
 
